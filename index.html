@@ -70,7 +70,7 @@
 
           <section class="guide-layout">
             <div class="chat-area">
-              <div class="section-heading"><div><p class="eyebrow">ASK YOUR GUIDE</p><h2>What are you curious about?</h2></div><span class="guide-online"><i></i> Local guide ready</span></div>
+              <div class="section-heading"><div><p class="eyebrow">ASK YOUR GUIDE</p><h2>What are you curious about?</h2></div><span class="guide-online"><i></i><span id="aiRuntimeStatus">Starting local AI</span></span></div>
               <div class="suggestion-row" id="suggestions"></div>
               <div class="conversation" id="conversation" aria-live="polite">
                 <article class="message guide-message"><div class="guide-face">D</div><div><span class="message-label">DHR COMPANION</span><p>I’ve got the railway’s stories with me. Try asking why this loop exists, or what makes this line a World Heritage Site.</p></div></article>
@@ -95,7 +95,7 @@
                 <dl><div><dt>Built</dt><dd id="contextBuilt">1919</dd></div><div><dt>Known for</dt><dd id="contextKnown">A full 360° loop</dd></div><div><dt>Altitude</dt><dd id="contextAltitude">6,700 ft</dd></div></dl>
                 <button class="outline-button" id="learnButton">Explore this landmark <span>→</span></button>
               </section>
-              <section class="offline-library panel-card"><div class="book-icon">▤</div><div><strong>Heritage library saved</strong><p><span id="factCount">10</span> local stories · ready offline</p></div><span class="check">✓</span></section>
+              <section class="offline-library panel-card"><div class="book-icon">▤</div><div><strong>Heritage library saved</strong><p id="storageStatus"><span id="factCount">10</span> facts · IndexedDB · local RAG</p></div><span class="check">✓</span></section>
             </aside>
           </section>
         </div>
@@ -114,7 +114,7 @@
     </main>
 
     <div class="toast hidden" id="toast"><span>🚂</span><div><strong id="toastTitle">You’re near Batasia Loop</strong><p id="toastText">The train is about to make its graceful spiral.</p></div><button id="dismissToast" aria-label="Dismiss notification">×</button></div>
-    <div class="modal-backdrop hidden" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle"><section class="settings-modal"><button class="modal-close" data-close>×</button><p class="eyebrow">DEMO CONTROL</p><h2 id="settingsTitle">Choose your location</h2><p>Simulation mode makes the guide reliable for the journey and for a live demo. GPS is used when you switch to it.</p><div class="mode-switch"><button class="mode-choice active" data-mode="demo">◉ Simulated journey</button><button class="mode-choice" data-mode="gps">⌖ Use GPS</button></div><div class="location-options" id="locationOptions"></div><p class="tech-note" id="gpsNote">Simulation is active. All heritage guidance works fully offline.</p></section></div>
-    <script src="app.js"></script>
+    <div class="modal-backdrop hidden" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle"><section class="settings-modal"><button class="modal-close" data-close>×</button><p class="eyebrow">DEMO CONTROL</p><h2 id="settingsTitle">Choose your location</h2><p>Simulation mode makes the guide reliable for the journey and for a live demo. GPS is used when you switch to it.</p><div class="mode-switch"><button class="mode-choice active" data-mode="demo">◉ Simulated journey</button><button class="mode-choice" data-mode="gps">⌖ Use GPS</button></div><div class="location-options" id="locationOptions"></div><p class="tech-note" id="gpsNote">Simulation is active. Retrieval is biased to the selected landmark.</p><div class="model-loader"><p class="eyebrow">OPTIONAL ON-DEVICE GEMMA</p><label for="gemmaFile">Load a locally downloaded web Gemma model</label><input id="gemmaFile" type="file" accept=".litertlm,.task,.bin"/><p id="modelNote">The guide never sends questions or location data to a cloud service.</p></div></section></div>
+    <script type="module" src="app.js"></script>
   </body>
 </html>
