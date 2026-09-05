@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#123c3d" />
+    <meta name="description" content="An offline, location-aware heritage guide for the Darjeeling Himalayan Railway." />
+    <title>DHR Companion · Offline Heritage Guide</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="rail-sidebar" aria-label="Journey information">
+        <a class="brand" href="#top" aria-label="DHR Companion home">
+          <span class="brand-mark">DHR</span>
+          <span><strong>Companion</strong><small>Darjeeling Himalayan Railway</small></span>
+        </a>
+
+        <nav class="journey-nav" aria-label="Main navigation">
+          <button class="nav-item active" data-nav="companion"><span>⌁</span> Your companion</button>
+          <button class="nav-item" data-nav="journey"><span>◉</span> Journey map</button>
+          <button class="nav-item" data-nav="library"><span>▤</span> Offline library</button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="offline-status"><i></i><span>Offline-ready</span></div>
+          <p>Curated for the 88 km<br/>mountain railway journey.</p>
+          <button class="quiet-button" id="settingsButton">⚙ Guide settings</button>
+        </div>
+      </aside>
+
+      <section class="main-panel" id="top">
+        <header class="topbar">
+          <div class="mobile-brand"><span class="brand-mark">DHR</span><strong>Companion</strong></div>
+          <div class="topbar-right">
+            <span class="chip chip-green"><span class="pulse"></span> Works without signal</span>
+            <button class="icon-button" id="soundButton" title="Toggle sound" aria-label="Toggle sound">♬</button>
+            <button class="avatar" title="Guest traveller">G</button>
+          </div>
+        </header>
+
+        <div class="content" id="companionView">
+          <section class="hero">
+            <div class="hero-copy">
+              <p class="eyebrow">YOUR OFFLINE HERITAGE GUIDE</p>
+              <h1>Every curve has<br/><em>a story.</em></h1>
+              <p class="hero-intro">Ask about the railway, the mountains, or what you see outside your window. Your guide keeps going when the signal doesn’t.</p>
+              <div class="journey-strip"><span class="mini-train">♜</span><span>NEW JALPAIGURI</span><b></b><span class="route-dot"></span><strong>DARJEELING</strong></div>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+              <div class="sun"></div><div class="mountain mountain-back"></div><div class="mountain mountain-front"></div>
+              <div class="rail rail-one"></div><div class="rail rail-two"></div><div class="toy-train"><span class="chimney"></span><span class="engine-window"></span><span class="engine-wheel wheel-a"></span><span class="engine-wheel wheel-b"></span></div>
+              <p>EST. 1881</p>
+            </div>
+          </section>
+
+          <section class="location-card" id="locationCard" aria-live="polite">
+            <div class="location-icon">⌖</div>
+            <div class="location-summary">
+              <p class="eyebrow">YOUR CURRENT HERITAGE MOMENT</p>
+              <h2 id="locationTitle">You’re near Batasia Loop</h2>
+              <p id="locationInsight">The railway spirals through a garden to gain height gracefully — with Kanchenjunga watching over the curve.</p>
+            </div>
+            <div class="location-actions">
+              <span class="distance" id="distanceLabel">within 180 m</span>
+              <button class="text-button" id="tellMeButton">Tell me more <span>→</span></button>
+            </div>
+          </section>
+
+          <section class="guide-layout">
+            <div class="chat-area">
+              <div class="section-heading"><div><p class="eyebrow">ASK YOUR GUIDE</p><h2>What are you curious about?</h2></div><span class="guide-online"><i></i> Local guide ready</span></div>
+              <div class="suggestion-row" id="suggestions"></div>
+              <div class="conversation" id="conversation" aria-live="polite">
+                <article class="message guide-message"><div class="guide-face">D</div><div><span class="message-label">DHR COMPANION</span><p>I’ve got the railway’s stories with me. Try asking why this loop exists, or what makes this line a World Heritage Site.</p></div></article>
+              </div>
+              <form class="ask-box" id="askForm">
+                <label class="sr-only" for="questionInput">Ask about the DHR</label>
+                <input id="questionInput" autocomplete="off" placeholder="Ask about what you’re seeing…" />
+                <button type="submit" aria-label="Send question"><span>↑</span></button>
+              </form>
+              <p class="privacy-note">⌁ Answers are created from the heritage library on this device.</p>
+            </div>
+
+            <aside class="context-rail">
+              <section class="journey-progress panel-card">
+                <div class="panel-title"><span>YOUR JOURNEY</span><button id="mapButton">View map</button></div>
+                <div class="route-visual"><div class="route-line"></div><div class="route-stop start">NJP</div><div class="route-stop active-stop">BATASIA</div><div class="route-stop end">DJ</div><div class="route-train">♜</div></div>
+                <div class="journey-stats"><span><strong id="journeyPercent">72%</strong> complete</span><span id="altitude">6,700 ft</span></div>
+              </section>
+              <section class="context-panel panel-card">
+                <p class="eyebrow">IN YOUR CONTEXT</p>
+                <h3 id="contextName">Batasia Loop</h3>
+                <dl><div><dt>Built</dt><dd id="contextBuilt">1919</dd></div><div><dt>Known for</dt><dd id="contextKnown">A full 360° loop</dd></div><div><dt>Altitude</dt><dd id="contextAltitude">6,700 ft</dd></div></dl>
+                <button class="outline-button" id="learnButton">Explore this landmark <span>→</span></button>
+              </section>
+              <section class="offline-library panel-card"><div class="book-icon">▤</div><div><strong>Heritage library saved</strong><p><span id="factCount">10</span> local stories · ready offline</p></div><span class="check">✓</span></section>
+            </aside>
+          </section>
+        </div>
+
+        <section class="alternate-view hidden" id="journeyView">
+          <p class="eyebrow">JOURNEY MAP · SIMULATION MODE</p><h1>Follow the climb to Darjeeling.</h1>
+          <p class="view-intro">Move the journey marker to experience location-aware heritage prompts exactly as a traveller would.</p>
+          <div class="map-board" id="mapBoard"></div>
+        </section>
+        <section class="alternate-view hidden" id="libraryView">
+          <p class="eyebrow">ON-DEVICE KNOWLEDGE</p><h1>A small library for a grand railway.</h1>
+          <p class="view-intro">Every response is grounded in these curated local heritage notes. No connection is required.</p>
+          <div class="library-grid" id="libraryGrid"></div>
+        </section>
+      </section>
+    </main>
+
+    <div class="toast hidden" id="toast"><span>🚂</span><div><strong id="toastTitle">You’re near Batasia Loop</strong><p id="toastText">The train is about to make its graceful spiral.</p></div><button id="dismissToast" aria-label="Dismiss notification">×</button></div>
+    <div class="modal-backdrop hidden" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle"><section class="settings-modal"><button class="modal-close" data-close>×</button><p class="eyebrow">DEMO CONTROL</p><h2 id="settingsTitle">Choose your location</h2><p>Simulation mode makes the guide reliable for the journey and for a live demo. GPS is used when you switch to it.</p><div class="mode-switch"><button class="mode-choice active" data-mode="demo">◉ Simulated journey</button><button class="mode-choice" data-mode="gps">⌖ Use GPS</button></div><div class="location-options" id="locationOptions"></div><p class="tech-note" id="gpsNote">Simulation is active. All heritage guidance works fully offline.</p></section></div>
+    <script src="app.js"></script>
+  </body>
+</html>
